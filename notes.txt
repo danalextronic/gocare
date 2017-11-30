@@ -1,0 +1,38 @@
+Goals for this API.
+
+    * Create, new API Users - API users in what sense? Users for the laravel app, or for Magento API? The latter is not possible via soap and must be done in Magento.
+    * Each API User, Can Create Magento Customers.
+    * Create and Associate Devices to Said Magento Customers - what is a Device?
+
+So the structure for our existing wholesale partners is this:
+
+    Parent Company -> Reseller -> End Customer.
+    The two parent companies we currently work with are O'Rourke and Leopard.
+    Each parent company has a number of child stores and locations.
+    IE. Store 22 at Buddy Rents, Store 67, Store 176 etc..
+    Each store sells the individual protection to the end customer.
+    However, what we store on our end, is not the end customers information but the Wholesale Reseller's information.
+    So we won't get an order from John Mathews, instead it will be Store 176 at Buddy Rents.
+    I am attaching some of their more recent csv's they've sent over. - can we get those?
+
+Right now our primary focus is to be able to utilize the bulk upload front-end interface of the API. So when we upload the CSV they've sent us...
+We check if the customers exist already, if they don't, create them and associate them to the right user group. Leopard Or O'Rourke.
+If the customer doesn't exist we will also need to create a new policy, our wholesale resellers use the normal policy.
+In simple terms they are a individual customer but with a lot of devices. - what is a policy?
+From there, check for a product sku, make sure we can find and match the product sku.
+(this is often incorrect, we have some basic rules where we try to automatically correct and match). - what are the rules?
+If we can find a matching sku, we go ahead and create the device and associate it to the customer. - is this done in Magento or in Laravel app?
+Once the bulk upload is complete it should send an email confirmation to the API user, and generate an invoice,
+list the number of devices created, how many if any failed and the order total etc. - Email sent to API user, not to wholesale customer? Invoice is one for Magento order, or entirely different thing?
+
+That's the very basic jist of this, I figured once you had it up and installed locally you would have more questions.
+
+Somethings to note, I believe the database file is missing in there you set DB's using the .env file system, I am not sure if its in there or not.
+If you need help configuring that reach out and I will. I know we originally had this pinging a live development site
+that's not quite up to the latest version of the life site, so we may need to do a new deployment of a development server
+if you experience any oddities. Also we may need to set a different mysql password on that database, I've recently
+changed all of the passwords and I am not sure that repo is current.
+================================
+
+So based on my discussion they think this is about 90% completed. I have attached the code base that is completed so
+far.. we can discuss more on Skype about questions you may have.

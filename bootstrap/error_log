@@ -1,0 +1,1 @@
+[06-Jul-2016 20:08:28 UTC] PHP Fatal error:  Class 'Illuminate\Foundation\Application' not found in /home/gc/public_html/laravel/bootstrap/app.php on line 14
